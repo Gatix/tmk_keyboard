@@ -27,7 +27,7 @@
 # make flip-ee = Download the eeprom file to the device, using Atmel FLIP
 #                (must have Atmel FLIP installed).
 #
-# make debug = Start either simulavr or avarice as specified for debugging, 
+# make debug = Start either simulavr or avarice as specified for debugging,
 #              with avr-gdb or avr-insight as the front end for debugging.
 #
 # make filename.s = Just compile filename.c into the assembler code only.
@@ -111,7 +111,7 @@ OPT_DEFS += -DBOOTLOADER_SIZE=4096
 # Build Options
 #   comment out to disable the options.
 #
-BOOTMAGIC_ENABLE = yes		# Virtual DIP switch configuration
+#BOOTMAGIC_ENABLE = yes		# Virtual DIP switch configuration
 MOUSEKEY_ENABLE = yes		# Mouse keys
 EXTRAKEY_ENABLE = yes		# Audio control and System control
 CONSOLE_ENABLE = yes		# Console for debug
@@ -133,7 +133,7 @@ ifdef KEYMAP
 else
     ifdef HHKB_JP
     	SRC := keymap_jp.c $(SRC)
-    else 
+    else
     	SRC := keymap_hhkb.c $(SRC)
     endif
 endif

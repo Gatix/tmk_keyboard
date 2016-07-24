@@ -82,13 +82,16 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      */
     [3] = \
     KEYMAP(GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, DEL, \
-           NO , NO,  NO,  NO,  NO,  NO,  WH_L,WH_D,MS_U,WH_U,WH_R, NO, NO,  NO,       \
+           FN3, NO,  NO,  NO,  NO,  NO,  WH_L,WH_D,MS_U,WH_U,WH_R, NO, NO,  NO,       \
            LCTL,ACL0,ACL1,ACL2,ACL2,NO,  NO,  MS_L,MS_D,MS_R,FN2, NO,  ENT,           \
            LSFT,NO,  NO,  NO,  NO,  BTN3,BTN2,BTN1,FN9, FN10,NO,  RSFT,TRNS,          \
                 LALT,LALT,          BTN1,               TRNS,TRNS),
 };
 
-
+enum macro_id {
+    ALT_TAB,
+    GUI_TAB,
+};
 
 /*
  * Fn action definition
@@ -97,4 +100,26 @@ const uint16_t fn_actions[] PROGMEM = {
     [0]  = ACTION_LAYER_MOMENTARY(1),
     [1]  = ACTION_LAYER_TAP_KEY(2, KC_G),
     [2]  = ACTION_LAYER_TAP_KEY(3, KC_SCLN),
+    [3]  = ACTION_MACRO(GUI_TAB),
 };
+
+
+
+/*
+ * Macro definition
+ */
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    switch (id) {
+        case ALT_TAB:
+            return (record->event.pressed ?
+                    MACRO( D(LALT), D(TAB), END ) :
+                    MACRO( U(TAB), END ));
+        case GUI_TAB:
+            return (record->event.pressed ?
+                    MACRO( D(LGUI), D(TAB), END ) :
+                    MACRO( U(TAB), END ));
+    }
+
+    return MACRO_NONE;
+}

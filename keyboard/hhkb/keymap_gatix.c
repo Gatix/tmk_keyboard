@@ -24,7 +24,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      */
     KEYMAP(ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSLS,GRV,   \
            TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSPC,       \
-           LCTL,A,   S,   D,   F, FN1,   H,   J,   K,   L,   SCLN,QUOT,ENT,             \
+           LCTL,A,   S,   D,   F, FN1,   H,   J,   K,   L,    FN2,QUOT,ENT,             \
            LSFT,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,RSFT,FN0,             \
                 LALT,LGUI,          SPC,                RGUI,RALT),
 
@@ -65,6 +65,27 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,LEFT,DOWN, UP, RGHT,TRNS,TRNS,TRNS,           \
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, TRNS,TRNS,TRNS,TRNS,          \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
+
+    /* Layer 3: Mouse mode(IJKL)[Semicolon]
+     * ,-----------------------------------------------------------.
+     * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
+     * |-----------------------------------------------------------|
+     * |Tab  |   |   |   |   |   |MwL|MwD|McU|MwU|MwR|   |   |     |
+     * |-----------------------------------------------------------|
+     * |Contro|   |   |   |   |   |Mb2|McL|McD|McR|Fn |   |Return  |
+     * |-----------------------------------------------------------|
+     * |Shift   |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |Shift |   |
+     * `-----------------------------------------------------------'
+     *      |Alt |Gui  |          Mb1          |     |   |
+     *      `--------------------------------------------'
+     * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel
+     */
+    [3] = \
+    KEYMAP(GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, DEL, \
+           NO , NO,  NO,  NO,  NO,  NO,  WH_L,WH_D,MS_U,WH_U,WH_R, NO, NO,  NO,       \
+           LCTL,ACL0,ACL1,ACL2,ACL2,NO,  NO,  MS_L,MS_D,MS_R,FN2, NO,  ENT,           \
+           LSFT,NO,  NO,  NO,  NO,  BTN3,BTN2,BTN1,FN9, FN10,NO,  RSFT,TRNS,          \
+                LALT,LALT,          BTN1,               TRNS,TRNS),
 };
 
 
@@ -75,4 +96,5 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
 const uint16_t fn_actions[] PROGMEM = {
     [0]  = ACTION_LAYER_MOMENTARY(1),
     [1]  = ACTION_LAYER_TAP_KEY(2, KC_G),
+    [2]  = ACTION_LAYER_TAP_KEY(3, KC_SCLN),
 };

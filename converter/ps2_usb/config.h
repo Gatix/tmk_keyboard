@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    t.m.k.
 #define PRODUCT         PS/2 keyboard converter
-#define DESCRIPTION     convert PS/2 keyboard to USB
+#define DESCRIPTION     convert PS/2 keyboard to USB, using custom keymap by Gatix
 
 
 /* matrix size */

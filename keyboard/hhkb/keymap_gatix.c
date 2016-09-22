@@ -96,7 +96,7 @@ enum macro_id {
 /*
  * Fn action definition
  */
-const uint16_t fn_actions[] PROGMEM = {
+const action_t fn_actions[] PROGMEM = {
     [0]  = ACTION_LAYER_MOMENTARY(1),
     [1]  = ACTION_LAYER_TAP_KEY(2, KC_G),
     [2]  = ACTION_LAYER_TAP_KEY(3, KC_SCLN),
